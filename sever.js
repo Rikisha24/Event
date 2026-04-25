@@ -5,17 +5,30 @@ app.use(express.json());
 
 // TEST ROUTE
 app.get("/", (req, res) => {
-  res.send("API is running...");
+  res.send("API is live");
 });
 
 // GET DATA
 app.get("/products", (req, res) => {
   res.json([
     { id: 1, name: "Laptop", price: 50000 },
-    { id: 2, name: "Phone", price: 20000 }import express from "express";
+    { id: 2, name: "Phone", price: 20000 }
+  ]);
+});
 
-const app = express();
-app.use(express.json());
+// POST DATA
+app.post("/orders", (req, res) => {
+  const order = req.body;
+  res.json({
+    message: "Order placed successfully",
+    order
+  });
+});
+
+// ADMIN ROUTE
+app.get("/admin", (req, res) => {
+  res.json({ secret: "Admin data" });
+});
 
 // TEST
 app.get("/", (req, res) => {
