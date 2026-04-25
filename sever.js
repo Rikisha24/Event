@@ -1,14 +1,14 @@
 import express from "express";
-const app = express();
 
+const app = express();
 app.use(express.json());
 
-// TEST ROUTE
+// Root route
 app.get("/", (req, res) => {
-  res.send("API is live");
+  res.send("API is LIVE 🚀");
 });
 
-// GET DATA
+// Data route
 app.get("/products", (req, res) => {
   res.json([
     { id: 1, name: "Laptop", price: 50000 },
@@ -16,34 +16,7 @@ app.get("/products", (req, res) => {
   ]);
 });
 
-// POST DATA
-app.post("/orders", (req, res) => {
-  const order = req.body;
-  res.json({
-    message: "Order placed successfully",
-    order
-  });
-});
-
-// ADMIN ROUTE
-app.get("/admin", (req, res) => {
-  res.json({ secret: "Admin data" });
-});
-
-// TEST
-app.get("/", (req, res) => {
-  res.send("API is live");
-});
-
-// SAMPLE DATA
-app.get("/products", (req, res) => {
-  res.json([
-    { id: 1, name: "Laptop", price: 50000 },
-    { id: 2, name: "Phone", price: 20000 }
-  ]);
-});
-
-// POST API
+// POST route
 app.post("/orders", (req, res) => {
   res.json({
     message: "Order created",
@@ -51,30 +24,9 @@ app.post("/orders", (req, res) => {
   });
 });
 
-// IMPORTANT for Render
-const PORT = process.env.PORT || 5000;
+// IMPORTANT for deployment
+const PORT = process.env.PORT || 3000;
 
 app.listen(PORT, () => {
   console.log("Server running on port " + PORT);
-});
-  ]);
-});
-
-// POST DATA
-app.post("/orders", (req, res) => {
-  const order = req.body;
-  res.json({
-    message: "Order placed successfully",
-    order
-  });
-});
-
-// ADMIN ROUTE
-app.get("/admin", (req, res) => {
-  res.json({ secret: "Admin data" });
-});
-
-// START SERVER
-app.listen(5000, () => {
-  console.log("Backend API running on port 5000");
 });
